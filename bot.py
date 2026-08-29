@@ -30,7 +30,7 @@ DIRECTOR_NAME = "Рузиев Э. Б."
 
 FORMS_DATA = {
     "1k": ("1к-шакли", "Суд қарорлари бўйича бажарилмаган мажбуриятлар мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда «Dobus Qurilish» МЧЖнинг суд қарорлари бўйича бажарилмаган мажбуриятлари бўлмаган.\n«Dobus Qurilish» МЧЖ, шунингдек, суд қарори бўйича мажбурият юзага келган тақдирда, бу ҳақда Буюртмачига дарҳол ёзма равишда хабар бериш мажбуриятини ўз зиммасига олади."),
+           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда «Dobus Qurilish» МЧЖнинг суд қарорлари бўйича бажарилмаган мажбуриятлари бўлмаган.\n«Dobus Qurilish» МЧЖ, шунингдек, суд қарори бўйича мажбурият юзага кеlgan тақдирда, бу ҳақда Буюртмачига дарҳол ёзма равишда хабар бериш мажбуриятини ўз зиммасига олади."),
     "2k": ("2к-шакли", "Ўзига нисбатан жорий этилган тўловга қобилиятсизлик (банкротлик, ликвидация) тартиб-таомилларининг мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
            "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда тўлов қобилиятсизлиги (банкротлик, тугатиш) жараёнлари жорий этилмаган."),
     "3k": ("3к-шакли", "Инсофсиз ижрочилар рўйхатига киритилмаганлиги тўғрисида кафолат хати\n(Ариза).", 
@@ -47,8 +47,16 @@ FORMS_DATA = {
            "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича ўхшаш товарларни етказиб бериш тажрибасига эгалигини маълум қилади."),
     "9k": ("9к-шакли", "Суд томонидан кўриб чиқилаётган ишлар мавжуд эмаслиги ҳақида кафолат хати\n(Ариза).", 
            "«Dobus Qurilish» МЧЖ ва Буюртмачи ўртасида суд томонидан кўриб чиқилаётган низоли ишлар мавжуд эмас."),
+    "10k": ("10к-шакли", "Солиқlar va yig'imlar bo'yicha qarzdorlik mavjud emasligi тўғрисида кафолат хати\n(Ариза).", 
+           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда таклиф тақдим этилган пайтда бюджет ва давлат мақсадli жамғармаларига нисбатан солиқлар ва йиғимлар бўйича муддати ўтган қарздорликлари мавжуд эмас."),
+    "11k": ("11к-шакли", "Litsenziya va ruxsatnomalar мавжудлиги тўғрисида кафолат хати\n(Ариза).", 
+           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича амалга ошириладиган фаолият турлари учун барча зарур лиcenziya va ruxsatnomalarga ega ekanligini tasdiqlaydi."),
     "12k": ("12к-шакли", "Иштирокчининг молиявий аҳволи тўғрисида маълумот\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖнинг молиявий кўрсаткичлари ва ликвидлик даражаси барқарор ҳамда тендер талабларига мос келишини маълум қиламиз.")
+           "«Dobus Qurilish» МЧЖнинг молиявий кўрсаткичlari va likvidlik darajasi barqaror hamda tender talablariga mos kelishini маълум қиламиз."),
+    "13k": ("13к-шакли", "Taklifning amal qilish muddati тўғрисида кафолат хати\n(Ариза).", 
+           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича тақдим этилган нарх таклифи ва бошқа шартлар эълон қилинган кундан бошлаб камида 60 календар кун мобайнида ўз куuchida qolishini kafolatlaydi."),
+    "14k": ("14к-шакли", "Ishonchlilik va sifat kafolati тўғрисида ариза\n(Кафолат хати).", 
+           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер доirasida bajariladigan ishlarining sifati va belgilangan muddatlarda to'liq bajarilishini ta'minlashga kafolat beradi.")
 }
 
 def make_stamp_transparent(input_path, output_path):
@@ -94,7 +102,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     sana = context.user_data['sana']
     buyurtmachi = context.user_data['buyurtmachi']
 
-    await update.message.reply_text("⏳ Hujjatlar shakllantirilmoqda, iltimos kuting...")
+    await update.message.reply_text("⏳ Barcha 14 ta hujjat shakllantirilmoqda, iltimos kuting...")
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
     original_stamp = os.path.join(base_dir, "stamp.png")
@@ -120,7 +128,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
 
-        # Header Logo
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_logo.paragraph_format.space_after = Pt(2)
@@ -128,14 +135,12 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_logo.font.size = Pt(26)
         r_logo.bold = True
 
-        # Rekvizitlar
         p_req = doc.add_paragraph()
         p_req.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_req.paragraph_format.space_after = Pt(0)
         r_req = p_req.add_run("г. Ташкент Мирабадский район массив Куйлюк-2, дом-9, кв-27. Тел: 71 290-93-78\np/с 2020 8000 2048 2684 7001, АТИБ «Ипотека банк» Миробад филиал, МФО: 00 420 ОКЭД: 43310, ИНН: 301 458 084")
         r_req.font.size = Pt(10)
 
-        # Chiziq
         p_line = doc.add_paragraph()
         p_line.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_line.paragraph_format.space_after = Pt(18)
@@ -143,14 +148,12 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_line.bold = True
         r_line.font.size = Pt(10)
 
-        # Shakl nomi
         p_shakl = doc.add_paragraph()
         p_shakl.alignment = WD_ALIGN_PARAGRAPH.RIGHT
         p_shakl.paragraph_format.space_after = Pt(12)
         r_shakl = p_shakl.add_run(f"Харид ҳужжатларига илова\n«{shakl_num}»")
         r_shakl.font.size = Pt(10)
 
-        # Sana & Buyurtmachi
         table_top = doc.add_table(rows=1, cols=2)
         table_top.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table_top)
@@ -173,7 +176,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         p_spacer = doc.add_paragraph()
         p_spacer.paragraph_format.space_before = Pt(12)
 
-        # Sarlavha
         p_title = doc.add_paragraph()
         p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_title.paragraph_format.space_after = Pt(14)
@@ -181,7 +183,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_title.font.size = Pt(14)
         r_title.bold = True
 
-        # Matn
         content = text_template.format(SANA=sana, LOT_NUMER=lot_number)
         for para in content.split('\n'):
             p_body = doc.add_paragraph()
@@ -191,7 +192,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
             r_body = p_body.add_run(para)
             r_body.font.size = Pt(14)
 
-        # Muhr va Imzo
         doc.add_paragraph().paragraph_format.space_before = Pt(20)
         table_sign = doc.add_table(rows=1, cols=3)
         table_sign.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -225,12 +225,11 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         doc.save(file_path)
         generated_files.append(file_path)
 
-    # Fayllarni Telegram'ga 1 soniyalik pauza bilan ketma-ket yuborish
     for file_p in generated_files:
         try:
             with open(file_p, 'rb') as doc_file:
                 await update.message.reply_document(document=doc_file)
-            await asyncio.sleep(1.2)  # Telegram spam cheklovidan o'tish uchun kutish
+            await asyncio.sleep(1.2)
         except Exception as e:
             print(f"Fayl yuborishda xatolik: {e}")
         finally:
@@ -240,7 +239,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if os.path.exists(temp_dir):
         os.rmdir(temp_dir)
 
-    await update.message.reply_text("✅ Barcha 10 ta shakl muvaffaqiyatli tayyorlandi va yuborildi!\n\nYangi lot yaratish uchun /start buyrug'ini bosing.")
+    await update.message.reply_text("✅ Barcha 14 ta shakl muvaffaqiyatli tayyorlandi va yuborildi!")
     return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
