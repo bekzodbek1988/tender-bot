@@ -248,7 +248,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return ConversationHandler.END
 
 def main():
-    TOKEN = "BOT_TOKEN_BURGA_JOYLASH"
+    TOKEN = "8996916069:AAFfxGbWY6YrK4f784ChJneTAg7tyuLoqW4"
 
     app = ApplicationBuilder().token(TOKEN).build()
 
