@@ -26,48 +26,23 @@ logging.basicConfig(
 
 SANA, BUYURTMACHI, LOT_NUMER = range(3)
 
+# Раҳбар маълумоти
 DIRECTOR_NAME = "Рузиев Э. Б."
 
-# Фақат сизга керакли бўлган 12 та ҳужжат рўйхати
-FORMS_DATA = {
-    "1k": ("1к-шакли", "Суд қарорлари бўйича бажарилмаган мажбуриятлар мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда «Dobus Qurilish» МЧЖнинг суд қарорлари бўйича бажарилмаган мажбуриятлари бўлмаган.\n«Dobus Qurilish» МЧЖ, шунингдек, суд қарори бўйича мажбурият юзага келган тақдирда, бу ҳақда Буюртмачига дарҳол ёзма равишда хабар бериш мажбуриятини ўз зиммасига олади."),
-    
-    "2k": ("2к-шакли", "Ўзига нисбатан жорий этилган тўловга қобилиятсизлик (банкротлик, ликвидация) тартиб-таомилларининг мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда тўлов қобилиятсизлиги (банкротлик, тугатиш) жараёнлари жорий этилмаган."),
-    
-    "3k": ("3к-шакли", "Инсофсиз ижрочилар рўйхатига киритилмаганлиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда «Dobus Qurilish» МЧЖ инсофсиз ижрочилар рўйхатига киритилмаган.\n«Dobus Qurilish» МЧЖ, шунингдек, инсофсиз рўйхатига киритилган тақдирда, бу ҳақда Буюртмачига дарҳол ёзма равишда хабар бериш мажбуриятини ўз зиммасига олади."),
-    
-    "4k": ("4к-шакли", "Манфаатлар тўқнашуви мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича харид ҳужжатларини ўрганиб чиқиб, манфаатлар тўқнашувининг барча шакллари мавжуд эмаслигини маълум қилади."),
-    
-    "5k": ("5к-шакли", "Аффиланганлик мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича аффиланганликнинг барча шакллари мавжуд эмаслигини маълум қилади."),
-    
-    "6k": ("6к-шакли", "Коррупция кўринишларига йўл қўймаслик бўйича кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендерда иштирок этиб, коррупцияга оид ҳуқуқбузарликларга йўл қўймаслик мажбуриятини олади."),
-    
-    "7k": ("7к-шакли", "Техник, молиявий, моддий ва инсон ресурслари мавжудлиги тўғрисида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендер бўйича шартномани бажариш учун етарли миқдордаги техник, молиявий, моддий ва инсон ресурсларига эга."),
-    
-    "8k": ("8к-шакли", "Етказиб бериш тажрибаси ҳақида маълумот\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича ўхшаш товарларни ва хизматларни етказиб бериш тажрибасига эгалигини маълум қилади."),
-    
-    "9k": ("9к-шакли", "Суд томонидан кўриб чиқилаётган ишлар мавжуд эмаслиги ҳақида кафолат хати\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ ва Буюртмачи ўртасида суд томонидан кўриб чиқилаётган низоли ишлар мавжуд эмас."),
-    
-    "12k": ("12к-шакли", "Иштирокчининг молиявий аҳволи тўғрисида маълумот\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖнинг молиявий кўрсаткичлари ва ликвидлик даражаси барқарор ҳамда тендер талабларига мос келишини маълум қиламиз."),
-    
-    "kafolat_xati": ("Кафолат хати", "Ишончлилик, сифат ва муддат кафолати тўғрисида\nКАФОЛАТ ХАТИ", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер доирасида бажариладиган барча ишлар ва етказиб беришлар сифатли, техник талабларга тўлиқ мос равишда ва белгиланган муддатларда бажарилишига пўлатдек кафолат беради."),
-    
-    "uskunalar": ("Ускуналар аризаси", "Зарур ускуна ва техникалар мавжудлиги тўғрисида\nАРИЗА", 
-           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендер шартлари ва техник топшириқда кўрсатилган барча ишларни ва етказиб беришни ўз вақтида ҳамда сифатли амалга ошириш учун зарур бўлган барча махсус ускуналар, техникалар ва асбоб-анжомлар жамиятимиз ихтиёрида мавжуд ва соз ҳолатдадир."),
-    
-    "tanishdim": ("Танишиб чиқдим аризаси", "Тендер ҳужжатлари ва шартлари билан танишиб чиқилганлиги тўғрисида\nАРИЗА", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер харид ҳужжатлари, техник топшириқлар ҳамда шартнома лойиҳасининг сифат ва бошқа барча талаблари билан атрофлича ва тўлиқ танишиб чиққанини ва ушбу шартларга эътирозсиз розилигини маълум қилади.")
+# Сиз сўраган 3 та алоҳида ҳужжат маълумотлари
+DOCUMENTS = {
+    "uskunalar_ariza": {
+        "title": "Зарур ускуна ва техникалар мавжудлиги тўғрисида\nАРИЗА",
+        "text": "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендер шартлари ва техник топшириқда кўрсатилган барча ишларни ва етказиб беришни ўз вақтида ҳамда сифатли амалга ошириш учун зарур бўлган барча махсус ускуналар, техникалар ва асбоб-анжомлар жамиятимиз ихтиёрида мавжуд ва соз ҳолатдадир."
+    },
+    "kafolat_xati": {
+        "title": "Ишончлилик, сифат ва муддат кафолати тўғрисида\nКАФОЛАТ ХАТИ",
+        "text": "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер доирасида бажариладиган барча ишлар ва етказиб беришлар сифатли, техник талабларга тўлиқ мос равишда ва белгиланган муддатларда бажарилишига кафолат беради."
+    },
+    "tanishdim_ariza": {
+        "title": "Тендер ҳужжатлари ва шартлари билан танишиб чиқилганлиги тўғрисида\nАРИЗА",
+        "text": "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер харид ҳужжатлари, техник топшириқлар ҳамда шартнома лойиҳасининг сифат ва бошқа барча талаблари билан атрофлича ва тўлиқ танишиб чиққанини ва ушбу шартларга эътирозсиз розилигини маълум қилади."
+    }
 }
 
 def make_stamp_transparent(input_path, output_path):
@@ -83,7 +58,7 @@ def make_stamp_transparent(input_path, output_path):
         img.putdata(new_data)
         img.save(output_path, "PNG")
     except Exception as e:
-        print(f"Rasmda xatolik: {e}")
+        print(f"Печат расмида хатолик: {e}")
 
 def remove_table_borders(table):
     tblPr = table._tbl.tblPr
@@ -95,7 +70,7 @@ def remove_table_borders(table):
     tblPr.append(tblBorders)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("Ассалому алайкум! Тендер ҳужжатларини шакллантириш учун **Санани** киритинг (масалан: `26-август 2026-йил`):", parse_mode="Markdown")
+    await update.message.reply_text("Ассалому алайкум! Ариза ва кафолат хатларини шакллантириш учун **Санани** киритинг (масалан: `30-август 2026-йил`):", parse_mode="Markdown")
     return SANA
 
 async def get_sana(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -105,7 +80,7 @@ async def get_sana(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 async def get_buyurtmachi(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['buyurtmachi'] = update.message.text
-    await update.message.reply_text("Енди **Лот рақамини** киритинг (масалан: `666554488`):", parse_mode="Markdown")
+    await update.message.reply_text("Енди **Лот рақамини** киритинг (масалан: `55555555`):", parse_mode="Markdown")
     return LOT_NUMER
 
 async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -113,7 +88,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     sana = context.user_data['sana']
     buyurtmachi = context.user_data['buyurtmachi']
 
-    await update.message.reply_text("⏳ Сиз сўраган 12 та ҳужжат шакллантирилмоқда, илтимос кутинг...")
+    await update.message.reply_text("⏳ Ҳужжатлар тайёрланмоқда...")
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
     original_stamp = os.path.join(base_dir, "stamp.png")
@@ -127,7 +102,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     generated_files = []
 
-    for key, (shakl_num, title, text_template) in FORMS_DATA.items():
+    for key, doc_info in DOCUMENTS.items():
         doc = Document()
         for section in doc.sections:
             section.top_margin = Cm(1.0)
@@ -139,6 +114,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
 
+        # Шапка (Корхона номи)
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_logo.paragraph_format.space_after = Pt(2)
@@ -154,24 +130,19 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
         p_line = doc.add_paragraph()
         p_line.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_line.paragraph_format.space_after = Pt(18)
+        p_line.paragraph_format.space_after = Pt(14)
         r_line = p_line.add_run("_________________________________________________________________________________")
         r_line.bold = True
         r_line.font.size = Pt(10)
 
-        p_shakl = doc.add_paragraph()
-        p_shakl.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        p_shakl.paragraph_format.space_after = Pt(12)
-        r_shakl = p_shakl.add_run(f"Харид ҳужжатларига илова\n«{shakl_num}»")
-        r_shakl.font.size = Pt(10)
-
+        # Сана ва Буюртмачи
         table_top = doc.add_table(rows=1, cols=2)
         table_top.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table_top)
-        
+
         cell_date = table_top.cell(0, 0)
         cell_date.width = Cm(9.0)
-        r_date = cell_date.paragraphs[0].add_run(f"{sana}")
+        r_date = cell_date.paragraphs[0].add_run(sana)
         r_date.font.size = Pt(14)
         r_date.bold = True
         r_date.underline = True
@@ -184,25 +155,27 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_buy.font.size = Pt(14)
         r_buy.bold = True
 
-        doc.add_paragraph().paragraph_format.space_before = Pt(12)
+        doc.add_paragraph().paragraph_format.space_before = Pt(16)
 
+        # Сарлавҳа
         p_title = doc.add_paragraph()
         p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_title.paragraph_format.space_after = Pt(14)
-        r_title = p_title.add_run(title)
+        r_title = p_title.add_run(doc_info["title"])
         r_title.font.size = Pt(14)
         r_title.bold = True
 
-        content = text_template.format(SANA=sana, LOT_NUMER=lot_number)
-        for para in content.split('\n'):
-            p_body = doc.add_paragraph()
-            p_body.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-            p_body.paragraph_format.first_line_indent = Inches(0.5)
-            p_body.paragraph_format.space_after = Pt(10)
-            r_body = p_body.add_run(para)
-            r_body.font.size = Pt(14)
+        # Матни
+        content = doc_info["text"].format(SANA=sana, LOT_NUMER=lot_number)
+        p_body = doc.add_paragraph()
+        p_body.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        p_body.paragraph_format.first_line_indent = Inches(0.5)
+        p_body.paragraph_format.space_after = Pt(10)
+        r_body = p_body.add_run(content)
+        r_body.font.size = Pt(14)
 
-        doc.add_paragraph().paragraph_format.space_before = Pt(20)
+        # Имзо ва Печат
+        doc.add_paragraph().paragraph_format.space_before = Pt(30)
         table_sign = doc.add_table(rows=1, cols=3)
         table_sign.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table_sign)
@@ -239,9 +212,9 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         try:
             with open(file_p, 'rb') as doc_file:
                 await update.message.reply_document(document=doc_file)
-            await asyncio.sleep(1.2)
+            await asyncio.sleep(1.0)
         except Exception as e:
-            print(f"Fayl yuborishda xatolik: {e}")
+            print(f"Файл юборишда хатолик: {e}")
         finally:
             if os.path.exists(file_p):
                 os.remove(file_p)
@@ -249,7 +222,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if os.path.exists(temp_dir):
         os.rmdir(temp_dir)
 
-    await update.message.reply_text("✅ Сиз сўраган 12 та ҳужжат муваффақиятли юборилди!")
+    await update.message.reply_text("✅ Барча ҳужжатлар муваффақиятли тайёрланди ва юборилди!")
     return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -257,6 +230,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return ConversationHandler.END
 
 def main():
+    # Токенингиз шу ерга ўрнатилди
     TOKEN = "8996916069:AAFfxGbWY6YrK4f784ChJneTAg7tyuLoqW4"
 
     app = ApplicationBuilder().token(TOKEN).build()
@@ -272,7 +246,7 @@ def main():
     )
 
     app.add_handler(conv_handler)
-    print("Боғланиш тайёр...")
+    print("Бот ишга тушди...")
     app.run_polling()
 
 if __name__ == '__main__':
