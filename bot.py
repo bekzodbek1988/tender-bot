@@ -24,7 +24,8 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-SANA, BUYURTMACHI, LOT_NUMER = range(3)
+# 1. Ҳолатларни (States) аниқ 0, 1, 2 қилиб белгилаймиз
+SANA, BUYURTMACHI, LOT_NUMER = 0, 1, 2
 
 COMPANY_NAME = "«Dobus Qurilish» МЧЖ"
 DIRECTOR_NAME = "Рузиев Э. Б."
@@ -156,17 +157,19 @@ def remove_table_borders(table):
     tblPr.append(tblBorders)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("Ассалому алайкум! Ҳужжатларни шакллантириш учун **Санани** киритинг (масалан: `2026-йил «14» август`):", parse_mode="Markdown")
+    context.user_data.clear()
+    await update.message.reply_text("1️⃣ **Санани** киритинг (масалан: `2026-йил «14» август`):", parse_mode="Markdown")
     return SANA
 
 async def get_sana(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['sana'] = update.message.text
-    await update.message.reply_text("Раҳмат! Энди **Буюртмачи номини** киритинг (масалан: `«ОКМК» АЖ`):", parse_mode="Markdown")
+    await update.message.reply_text("2️⃣ **Буюртмачи номини** киритинг (масалан: `ОКМК`):", parse_mode="Markdown")
     return BUYURTMACHI
 
 async def get_buyurtmachi(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['buyurtmachi'] = update.message.text
-    await update.message.reply_text("Энди **Лот рақамини** киритинг (масалан: `8213557`):", parse_mode="Markdown")
+    # Бу ерда ЛОТ РАҚАМИ сўралиши қатъий белгиланди:
+    await update.message.reply_text("3️⃣ **Лот рақамини** киритинг (масалан: `8213557`):", parse_mode="Markdown")
     return LOT_NUMER
 
 async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -174,7 +177,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     sana = context.user_data.get('sana', '')
     buyurtmachi = context.user_data.get('buyurtmachi', '')
 
-    await update.message.reply_text("⏳ Ҳужжатлар тайёрланмоқда...")
+    await update.message.reply_text("⏳ Барча (10 та) ҳужжатлар 14-шрифтда ва 1 саҳифали форматда тайёрланмоқда...")
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
     original_stamp = os.path.join(base_dir, "stamp.png")
@@ -191,19 +194,16 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     for key, doc_info in DOCUMENTS.items():
         doc = Document()
         
-        # Саҳифа ҳошияларини сиқилтириш (1 саҳифага пўльно сиғиши учун)
         for section in doc.sections:
             section.top_margin = Cm(1.0)
             section.bottom_margin = Cm(1.0)
             section.left_margin = Cm(1.8)
             section.right_margin = Cm(1.0)
 
-        # 4. ШРИФТ 14 pt ҚИЛИНДИ
         style = doc.styles['Normal']
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
 
-        # 1. Корхона шапкаси (Ташкилот бланкасида олиб ташланди)
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_logo.paragraph_format.space_after = Pt(1)
@@ -227,7 +227,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_line.bold = True
         r_line.font.size = Pt(8)
 
-        # 2. Сана ва Буюртмачи ((танлов буюртмачиси) олиб ташланди)
         table_top = doc.add_table(rows=1, cols=2)
         table_top.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table_top)
@@ -250,7 +249,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_buy.font.size = Pt(14)
         r_buy.bold = True
 
-        # Сарлавҳа (14pt)
         p_title = doc.add_paragraph()
         p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_title.paragraph_format.space_before = Pt(8)
@@ -260,7 +258,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_title.font.size = Pt(14)
         r_title.bold = True
 
-        # Кириш матни (14pt)
         intro_text = doc_info["intro"].format(COMPANY_NAME=COMPANY_NAME, SANA=sana, LOT_NUMER=lot_number)
         p_intro = doc.add_paragraph()
         p_intro.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
@@ -270,7 +267,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_intro = p_intro.add_run(intro_text)
         r_intro.font.size = Pt(14)
 
-        # Бандлар (14pt)
         for idx, item in enumerate(doc_info["items"], 1):
             p_item = doc.add_paragraph()
             p_item.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
@@ -280,7 +276,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
             r_item = p_item.add_run(f"{idx}. {item}")
             r_item.font.size = Pt(14)
 
-        # Якуний матн (14pt)
         if doc_info["outro"]:
             p_outro = doc.add_paragraph()
             p_outro.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
@@ -291,7 +286,6 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
             r_outro = p_outro.add_run(doc_info["outro"])
             r_outro.font.size = Pt(14)
 
-        # 3. Мўҳр ва Имзо (2-саҳифага ўтиб кетмаслиги таъминланди)
         p_space = doc.add_paragraph()
         p_space.paragraph_format.space_before = Pt(8)
         p_space.paragraph_format.keep_with_next = True
@@ -332,12 +326,11 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         doc.save(file_path)
         generated_files.append(file_path)
 
-    # 5. Барча ҳужжатларни (1k-12k) Телеграмга юбориш
     for file_p in generated_files:
         try:
             with open(file_p, 'rb') as doc_file:
                 await update.message.reply_document(document=doc_file)
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.4)
         except Exception as e:
             print(f"Файл юборишда хатолик: {e}")
         finally:
@@ -347,7 +340,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if os.path.exists(temp_dir):
         os.rmdir(temp_dir)
 
-    await update.message.reply_text("✅ Барча ҳужжатлар (1k, 2k, 4k, 5k, 6k, 7k, 8k, 9k, 10k ва 12k) 14-шрифтда, 1 саҳифали форматда муваффақиятли тайёрланди ва юборилди!")
+    await update.message.reply_text("✅ Барча 10 та ҳужжат (1k–12k) тайёрланди!")
     return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -370,7 +363,7 @@ def main():
     )
 
     app.add_handler(conv_handler)
-    print("Бот янгиланган параметрлар билан ишга тушди...")
+    print("Бот қайта ишга туширилди...")
     app.run_polling()
 
 if __name__ == '__main__':
