@@ -28,6 +28,7 @@ SANA, BUYURTMACHI, LOT_NUMER = range(3)
 
 DIRECTOR_NAME = "Рузиев Э. Б."
 
+# Barcha matnlar to'liq kirilchaga o'tkazildi va qo'shimcha xatlar qo'shildi
 FORMS_DATA = {
     "1k": ("1к-шакли", "Суд қарорлари бўйича бажарилмаган мажбуриятлар мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
            "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлаб олиш бўйича таклиф тақдим этилган пайтда «Dobus Qurilish» МЧЖнинг суд қарорлари бўйича бажарилмаган мажбуриятлари бўлмаган.\n«Dobus Qurilish» МЧЖ, шунингдек, суд қарори бўйича мажбурият юзага келган тақдирда, бу ҳақда Буюртмачига дарҳол ёзма равишда хабар бериш мажбуриятини ўз зиммасига олади."),
@@ -44,7 +45,7 @@ FORMS_DATA = {
     "7k": ("7к-шакли", "Техник, молиявий, моддий ва инсон ресурслари мавжудлиги тўғрисида кафолат хати\n(Ариза).", 
            "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендер бўйича шартномани бажариш учун етарли миқдордаги техник, молиявий, моддий ва инсон ресурсларига эга."),
     "8k": ("8к-шакли", "Етказиб бериш тажрибаси ҳақида маълумот\n(Ариза).", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича ўхшаш товарларни етказиб бериш тажрибасига эгалигини маълум қилади."),
+           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича ўхшаш товарларни ва хизматларни етказиб бериш тажрибасига эгалигини маълум қилади."),
     "9k": ("9к-шакли", "Суд томонидан кўриб чиқилаётган ишлар мавжуд эмаслиги ҳақида кафолат хати\n(Ариза).", 
            "«Dobus Qurilish» МЧЖ ва Буюртмачи ўртасида суд томонидан кўриб чиқилаётган низоли ишлар мавжуд эмас."),
     "10k": ("10к-шакли", "Солиқлар ва йиғимлар бўйича қарздорлик мавжуд эмаслиги тўғрисида кафолат хати\n(Ариза).", 
@@ -56,7 +57,11 @@ FORMS_DATA = {
     "13k": ("13к-шакли", "Таклифнинг амал қилиш муддати тўғрисида кафолат хати\n(Ариза).", 
            "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер бўйича тақдим этилган нарх таклифи ва бошқа шартлар эълон қилинган кундан бошлаб камида 60 календарь кун мобайнида ўз кучида қолишини кафолатлайди."),
     "14k": ("14к-шакли", "Ишончлилик ва сифат кафолати тўғрисида ариза\n(Кафолат хати).", 
-           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер доирасида бажариладиган ишларининг сифати ва белгиланган муддатларда тўлиқ бажарилишини таъминлашга кафолат беради.")
+           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер доирасида бажариладиган ишларининг сифати ва белгиланган муддатларда тўлиқ бажарилишини таъминлашга кафолат беради."),
+    "15k_uskuna": ("15к-шакли", "Зарур ускуна ва техникалар мавжудлиги тўғрисида кафолат хати\n(Ариза).", 
+           "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендер шартлари ва техник топшириқда кўрсатилган барча ишларни ва етказиб беришни ўз вақтида ҳамда сифатли амалга ошириш учун зарур бўлган барча махсус ускуналар, техникалар ва асбоб-анжомлар жамиятимиз ихтиёрида мавжуд ва соз ҳолатдадир."),
+    "16k_tanishdim": ("16к-шакли", "Тендер ҳужжатлари ва шартлари билан танишиб чиқилганлиги тўғрисида ариза\n(Билдиришнома).", 
+           "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер харид ҳужжатлари, техник топшириқлар ҳамда шартнома лойиҳасининг сифат ва бошқа барча талаблари билан атрофлича ва тўлиқ танишиб чиққанини ва ушбу шартларга эътирозсиз розилигини маълум қилади.")
 }
 
 def make_stamp_transparent(input_path, output_path):
@@ -84,17 +89,17 @@ def remove_table_borders(table):
     tblPr.append(tblBorders)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("Assalomu alaykum! Tender hujjatlarini shakllantirish uchun **Sanani** kiriting (masalan: `26-август 2026-йил`):", parse_mode="Markdown")
+    await update.message.reply_text("Ассалому алайкум! Тендер ҳужжатларини шакллантириш учун **Санани** киритинг (масалан: `26-август 2026-йил`):", parse_mode="Markdown")
     return SANA
 
 async def get_sana(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['sana'] = update.message.text
-    await update.message.reply_text("Rahmat! Endi **Buyurtmachi nomini** kiriting (masalan: `«ОКМК» АЖ`):", parse_mode="Markdown")
+    await update.message.reply_text("Раҳмат! Енди **Буюртмачи номини** киритинг (масалан: `«ОКМК» АЖ`):", parse_mode="Markdown")
     return BUYURTMACHI
 
 async def get_buyurtmachi(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['buyurtmachi'] = update.message.text
-    await update.message.reply_text("Endi **Lot raqamini** kiriting (masalan: `666554488`):", parse_mode="Markdown")
+    await update.message.reply_text("Енди **Лот рақамини** киритинг (масалан: `666554488`):", parse_mode="Markdown")
     return LOT_NUMER
 
 async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -102,7 +107,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     sana = context.user_data['sana']
     buyurtmachi = context.user_data['buyurtmachi']
 
-    await update.message.reply_text("⏳ Barcha 14 ta hujjat shakllantirilmoqda, iltimos kuting...")
+    await update.message.reply_text("⏳ Барча 16 та ҳужжат шакллантирилмоқда, илтимос кутинг...")
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
     original_stamp = os.path.join(base_dir, "stamp.png")
@@ -221,7 +226,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         r_sig2.font.size = Pt(14)
         r_sig2.bold = True
 
-        file_path = os.path.join(temp_dir, f"{key}_shakli_{lot_number}.docx")
+        file_path = os.path.join(temp_dir, f"{key}_{lot_number}.docx")
         doc.save(file_path)
         generated_files.append(file_path)
 
@@ -239,7 +244,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if os.path.exists(temp_dir):
         os.rmdir(temp_dir)
 
-    await update.message.reply_text("✅ Barcha 14 ta shakl muvaffaqiyatli tayyorlandi va yuborildi!")
+    await update.message.reply_text("✅ Барча 16 та шакл муваффақиятли тайёрланди ва юборилди!")
     return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -247,7 +252,8 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return ConversationHandler.END
 
 def main():
-    TOKEN = "8996916069:AAFfxGbWY6YrK4f784ChJneTAg7tyuLoqW4"
+    # TOKEN ni o'zingizning Telegram Bot tokeningiz bilan almashtiring
+    TOKEN = "Sizning_Tokeningiz_shu_yerda_qoladi"
 
     app = ApplicationBuilder().token(TOKEN).build()
 
