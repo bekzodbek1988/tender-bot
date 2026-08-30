@@ -26,22 +26,49 @@ logging.basicConfig(
 
 SANA, BUYURTMACHI, LOT_NUMER = range(3)
 
-# Раҳбар маълумоти
+COMPANY_NAME = "«Dobus Qurilish» МЧЖ"
 DIRECTOR_NAME = "Рузиев Э. Б."
 
-# Сиз сўраган 3 та алоҳида ҳужжат маълумотлари
 DOCUMENTS = {
-    "uskunalar_ariza": {
-        "title": "Зарур ускуна ва техникалар мавжудлиги тўғрисида\nАРИЗА",
-        "text": "«Dobus Qurilish» МЧЖ шуни маълум қиладики, {SANA} даги {LOT_NUMER}-сонли тендер шартлари ва техник топшириқда кўрсатилган барча ишларни ва етказиб беришни ўз вақтида ҳамда сифатли амалга ошириш учун зарур бўлган барча махсус ускуналар, техникалар ва асбоб-анжомлар жамиятимиз ихтиёрида мавжуд ва соз ҳолатдадир."
+    "1_kafolat_xati": {
+        "title": "Кафолат хати",
+        "intro": "{COMPANY_NAME} шуни маълум қиладики, {SANA}даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлашда иштирок этиб, товар етказиб бериш учун ёки иш ва хизматларни бажариш учун ишларни бажариш ва хизматларни кўрсатиш бўйича техник таклиф. Тендерда ғолиб деб топилган тақдирда, шартномада кўрсатиладиган ишларни бажариш ва хизматларни кўрсатиш муддатлари юзасидан қуйидаги мажбуриятларни ўз зиммасига олади ва тўлиқ кафолатлайди:",
+        "items": [
+            "Ишларни бошлаш муддати: Шартнома иккала томонлама имзоланиб, қонуний кучга киргандан ҳамда Давлат буюртмачиси томонидан олдиндан тўлов (аванс) маблағлари компаниямиз ҳисоб рақамига келиб тушган кундан бошлаб 3 (уч) банк кунидан кечиктирмасдан объектда ишларни амалда бошлашни;",
+            "Шартнома шартларига амал қилиш: Ишлар ва хизматларни техник топшириқ ҳамда тасдиқланган Нуқсон далолатномасига мувофиқ, босқичма-босқич ва белгиланган муддатларда сифатли тарзда якунлашни;",
+            "Техник база ва сафарбарлик: Ишларни муддатида тугатиш учун компаниямиз ихтиёридаги барча зарур муҳандислик-техник ходимларни, ишчи кучини ҳамда етарли миқдордаги асбоб-ускуналар ва технологик воситаларни объектга биринчи кунданоқ тўлиқ сафарбар этишни;"
+        ],
+        "outro": "Ушбу кафолат хати шартнома имзоланган кундан бошлаб, нуқсон далолатномасидаги барча ишлар тасдиқланган графикга асосан тўлиқ якунланиб, Буюртмачи томонидан якуний қабул қилиш-топшириш далолатномаси имзолангунга қадар ўз кучини сақлаб қолади."
     },
-    "kafolat_xati": {
-        "title": "Ишончлилик, сифат ва муддат кафолати тўғрисида\nКАФОЛАТ ХАТИ",
-        "text": "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер доирасида бажариладиган барча ишлар ва етказиб беришлар сифатли, техник талабларга тўлиқ мос равишда ва белгиланган муддатларда бажарилишига кафолат беради."
+    "2_tanishuv": {
+        "title": "Танишув",
+        "intro": "{COMPANY_NAME} шуни маълум қиладики, {SANA}даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлашда иштирок этиб, товар етказиб бериш учун ёки иш ва хизматларни бажариш учун мазкур лот бўйича ўтказилаётган танлов ҳужжатлари, лойиҳа-смета ҳужжатлари ҳамда тасдиқланган Техник вазифа (ТЗ — Техническое задание) шартлари ва талаблари билан тўлиқ танишиб чиққанлигини маълум қилади.\n\nБиз мазкур танлов ҳужжатларидаги ва Техник вазифадаги (ТЗ) барча шартларни тўлиқ тушунган ҳолда, танловда ғолиб деб топилган тақдиртимизда қуйидагиларни кафолатлаймиз:",
+        "items": [
+            "Техник талабларга мувофиқлик: Объектдаги барча ишларни (хизматларни) Техник вазифада (ТЗ) кўрсатилган параметрлар, норматив стандартлар (ҚМҚ, ШНК ёки ГОСТ) ва давлат буюртмачисининг техник талабларига қатъий риоя қилган ҳолда амалга оширишни;",
+            "Сифат кафолати: Ишларни бажаришда фойдаланиладиган барча материаллар, конструкциялар ва асбоб-ускуналарнинг сифатли бўлишини, уларнинг тегишли сифат ва мувофиқлик сертификатларига эга бўлишини ҳамда бажарилган ишларга шартномада белгиланган муддат давомида тўлиқ кафолат беришни;",
+            "Муддатларга риоя қилиш: Барча ишлар ва хизматларни танлов шартлари ҳамда иккала томонлама тасдиқланадиган Календарь режа-графигида кўрсатилган муддатлардан кечиктирмасдан, ўз вақтида ва тўлиқ ҳажмда якунлашни;",
+            "Малакали мутахассислар сафарбарлиги: Лойиҳани сифатли якунлаш учун объектга етарли даражада малакали ва тажрибали муҳандис-техник ходимларни (ИТР) ҳамда ишчи кучини жалб этишни."
+        ],
+        "outro": "Мазкур танловнинг Техник вазифасида (ТЗ) кўрсатилган талаблар юзасидан биз томондан ҳеч қандай эътирозлар мавжуд эмас ва биз ушбу шартлар асосида мажбуриятларимизни сидқидилдан бажаришга тайёрмиз."
     },
-    "tanishdim_ariza": {
-        "title": "Тендер ҳужжатлари ва шартлари билан танишиб чиқилганлиги тўғрисида\nАРИЗА",
-        "text": "«Dobus Qurilish» МЧЖ {SANA} даги {LOT_NUMER}-сонли тендер харид ҳужжатлари, техник топшириқлар ҳамда шартнома лойиҳасининг сифат ва бошқа барча талаблари билан атрофлича ва тўлиқ танишиб чиққанини ва ушбу шартларга эътирозсиз розилигини маълум қилади."
+    "3_usqunalar_malumotnoma": {
+        "title": "Ускуналар ҳақида маълумотнома",
+        "intro": "{COMPANY_NAME} шуни маълум қиладики, {SANA}даги {LOT_NUMER}-сонли тендерда энг яхши таклифларни танлашда иштирок этиб, товар етказиб бериш учун ёки иш ва хизматларни бажариш учун барча зарурий жиҳозлар ва асбоб-ускуналарлар билан тулиқ таъминланган. Зарур хом ашё захираси мавжуд. Қуйида мавжуд асбоб-ускуналар руйхати келтирилиб утилган:",
+        "items": [
+            "Компрессор воздушный-Total TC1202411 24 L 1500W-1 дона",
+            "Компрессор воздушный-Total TCS1120508, 50 litr-1 дона",
+            "Болгарка- Crown 180 MM-2 дона",
+            "Болгарка- Crown 125 MM-2 дона",
+            "Перфоратор Ingco RH10506, 1050 Вт-1 дона",
+            "Перфоратор Croon 32 1500W 220V/50Hz-1 дона",
+            "Аккумуляторная дрель-шуруповерт LFINE 48B-2 дона",
+            "Шуруповёрт Graff 48V-1 дона",
+            "Сварочный аппарат Ураган MIG-350 (MIG / MMA)-1 дона",
+            "Аппарат для сварки пластиковых труб АСПТ-2000А Ресанта арт. 65/136-2 дона",
+            "Сварочный аппарат для пластиковых труб Ураган-2 дона",
+            "Газовый сварочный аппарат-1 дона."
+        ],
+        "outro": ""
     }
 }
 
@@ -70,17 +97,17 @@ def remove_table_borders(table):
     tblPr.append(tblBorders)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await update.message.reply_text("Ассалому алайкум! Ариза ва кафолат хатларини шакллантириш учун **Санани** киритинг (масалан: `30-август 2026-йил`):", parse_mode="Markdown")
+    await update.message.reply_text("Ассалому алайкум! Ҳужжатларни шакллантириш учун **Санани** киритинг (масалан: `2026-йил «14» август`):", parse_mode="Markdown")
     return SANA
 
 async def get_sana(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['sana'] = update.message.text
-    await update.message.reply_text("Раҳмат! Енди **Буюртмачи номини** киритинг (масалан: `«ОКМК» АЖ`):", parse_mode="Markdown")
+    await update.message.reply_text("Раҳмат! Энди **Буюртмачи номини** киритинг (масалан: `«ОКМК» АЖ`):", parse_mode="Markdown")
     return BUYURTMACHI
 
 async def get_buyurtmachi(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['buyurtmachi'] = update.message.text
-    await update.message.reply_text("Енди **Лот рақамини** киритинг (масалан: `55555555`):", parse_mode="Markdown")
+    await update.message.reply_text("Энди **Лот рақамини** киритинг (масалан: `8213557`):", parse_mode="Markdown")
     return LOT_NUMER
 
 async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -105,37 +132,45 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     for key, doc_info in DOCUMENTS.items():
         doc = Document()
         for section in doc.sections:
-            section.top_margin = Cm(1.0)
-            section.bottom_margin = Cm(1.0)
+            section.top_margin = Cm(1.5)
+            section.bottom_margin = Cm(1.5)
             section.left_margin = Cm(2.0)
             section.right_margin = Cm(1.0)
 
         style = doc.styles['Normal']
         style.font.name = 'Times New Roman'
-        style.font.size = Pt(14)
+        style.font.size = Pt(12)
 
-        # Шапка (Корхона номи)
+        # 1. Ташкилот бланкасида ёзуви
+        p_blank = doc.add_paragraph()
+        p_blank.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        p_blank.paragraph_format.space_after = Pt(4)
+        r_blank = p_blank.add_run("Ташкилот бланкасида")
+        r_blank.font.size = Pt(11)
+        r_blank.italic = True
+
+        # 2. Корхона шапкаси
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_logo.paragraph_format.space_after = Pt(2)
         r_logo = p_logo.add_run("ООО «DOBUS QURILISH»")
-        r_logo.font.size = Pt(26)
+        r_logo.font.size = Pt(22)
         r_logo.bold = True
 
         p_req = doc.add_paragraph()
         p_req.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_req.paragraph_format.space_after = Pt(0)
         r_req = p_req.add_run("г. Ташкент Мирабадский район массив Куйлюк-2, дом-9, кв-27. Тел: 71 290-93-78\np/с 2020 8000 2048 2684 7001, АТИБ «Ипотека банк» Миробад филиал, МФО: 00 420 ОКЭД: 43310, ИНН: 301 458 084")
-        r_req.font.size = Pt(10)
+        r_req.font.size = Pt(9)
 
         p_line = doc.add_paragraph()
         p_line.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_line.paragraph_format.space_after = Pt(14)
+        p_line.paragraph_format.space_after = Pt(10)
         r_line = p_line.add_run("_________________________________________________________________________________")
         r_line.bold = True
-        r_line.font.size = Pt(10)
+        r_line.font.size = Pt(9)
 
-        # Сана ва Буюртмачи
+        # 3. Сана ва Буюртмачи
         table_top = doc.add_table(rows=1, cols=2)
         table_top.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table_top)
@@ -143,7 +178,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         cell_date = table_top.cell(0, 0)
         cell_date.width = Cm(9.0)
         r_date = cell_date.paragraphs[0].add_run(sana)
-        r_date.font.size = Pt(14)
+        r_date.font.size = Pt(12)
         r_date.bold = True
         r_date.underline = True
 
@@ -151,31 +186,50 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         cell_buy.width = Cm(9.0)
         p_buy = cell_buy.paragraphs[0]
         p_buy.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        r_buy = p_buy.add_run(f"«{buyurtmachi}»")
-        r_buy.font.size = Pt(14)
+        r_buy = p_buy.add_run(f"«{buyurtmachi}» АЖ(танлов буюртмачиси)")
+        r_buy.font.size = Pt(12)
         r_buy.bold = True
 
-        doc.add_paragraph().paragraph_format.space_before = Pt(16)
+        doc.add_paragraph().paragraph_format.space_before = Pt(12)
 
-        # Сарлавҳа
+        # 4. Сарлавҳа
         p_title = doc.add_paragraph()
         p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_title.paragraph_format.space_after = Pt(14)
+        p_title.paragraph_format.space_after = Pt(12)
         r_title = p_title.add_run(doc_info["title"])
         r_title.font.size = Pt(14)
         r_title.bold = True
 
-        # Матни
-        content = doc_info["text"].format(SANA=sana, LOT_NUMER=lot_number)
-        p_body = doc.add_paragraph()
-        p_body.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        p_body.paragraph_format.first_line_indent = Inches(0.5)
-        p_body.paragraph_format.space_after = Pt(10)
-        r_body = p_body.add_run(content)
-        r_body.font.size = Pt(14)
+        # 5. Кириш матни
+        intro_text = doc_info["intro"].format(COMPANY_NAME=COMPANY_NAME, SANA=sana, LOT_NUMER=lot_number)
+        p_intro = doc.add_paragraph()
+        p_intro.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        p_intro.paragraph_format.first_line_indent = Inches(0.5)
+        p_intro.paragraph_format.space_after = Pt(6)
+        r_intro = p_intro.add_run(intro_text)
+        r_intro.font.size = Pt(12)
 
-        # Имзо ва Печат
-        doc.add_paragraph().paragraph_format.space_before = Pt(30)
+        # 6. Бандлар / Рўйхат
+        for idx, item in enumerate(doc_info["items"], 1):
+            p_item = doc.add_paragraph()
+            p_item.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+            p_item.paragraph_format.left_indent = Inches(0.25)
+            p_item.paragraph_format.space_after = Pt(4)
+            r_item = p_item.add_run(f"{idx}. {item}")
+            r_item.font.size = Pt(12)
+
+        # 7. Якуний матн (агар бўлса)
+        if doc_info["outro"]:
+            p_outro = doc.add_paragraph()
+            p_outro.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+            p_outro.paragraph_format.first_line_indent = Inches(0.5)
+            p_outro.paragraph_format.space_before = Pt(6)
+            p_outro.paragraph_format.space_after = Pt(10)
+            r_outro = p_outro.add_run(doc_info["outro"])
+            r_outro.font.size = Pt(12)
+
+        # 8. Имзо ва Печат
+        doc.add_paragraph().paragraph_format.space_before = Pt(24)
         table_sign = doc.add_table(rows=1, cols=3)
         table_sign.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table_sign)
@@ -183,8 +237,8 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         cell_left = table_sign.cell(0, 0)
         cell_left.width = Cm(6.5)
         cell_left.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-        r_sig1 = cell_left.paragraphs[0].add_run("«Dobus Qurilish» МЧЖ раҳбари")
-        r_sig1.font.size = Pt(14)
+        r_sig1 = cell_left.paragraphs[0].add_run(f"{COMPANY_NAME} раҳбари")
+        r_sig1.font.size = Pt(12)
         r_sig1.bold = True
 
         cell_middle = table_sign.cell(0, 1)
@@ -193,15 +247,15 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         p_stamp = cell_middle.paragraphs[0]
         p_stamp.alignment = WD_ALIGN_PARAGRAPH.CENTER
         if os.path.exists(clean_stamp):
-            p_stamp.add_run().add_picture(clean_stamp, width=Inches(2.5))
+            p_stamp.add_run().add_picture(clean_stamp, width=Inches(2.2))
 
         cell_right = table_sign.cell(0, 2)
         cell_right.width = Cm(5.0)
         cell_right.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         p_sig_name = cell_right.paragraphs[0]
         p_sig_name.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        r_sig2 = p_sig_name.add_run(DIRECTOR_NAME)
-        r_sig2.font.size = Pt(14)
+        r_sig2 = p_sig_name.add_run(f"________________ {DIRECTOR_NAME}")
+        r_sig2.font.size = Pt(12)
         r_sig2.bold = True
 
         file_path = os.path.join(temp_dir, f"{key}_{lot_number}.docx")
@@ -212,7 +266,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         try:
             with open(file_p, 'rb') as doc_file:
                 await update.message.reply_document(document=doc_file)
-            await asyncio.sleep(1.0)
+            await asyncio.sleep(0.8)
         except Exception as e:
             print(f"Файл юборишда хатолик: {e}")
         finally:
@@ -222,7 +276,7 @@ async def generate_and_send(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if os.path.exists(temp_dir):
         os.rmdir(temp_dir)
 
-    await update.message.reply_text("✅ Барча ҳужжатлар муваффақиятли тайёрланди ва юборилди!")
+    await update.message.reply_text("✅ Барча 3 та ҳужжат (Кафолат хати, Танишув ва Ускуналар маълумотномаси) муваффақиятли тайёрланди ва юборилди!")
     return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -230,7 +284,6 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return ConversationHandler.END
 
 def main():
-    # Токенингиз шу ерга ўрнатилди
     TOKEN = "8996916069:AAFfxGbWY6YrK4f784ChJneTAg7tyuLoqW4"
 
     app = ApplicationBuilder().token(TOKEN).build()
