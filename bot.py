@@ -253,7 +253,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 def main():
     # TOKEN ni o'zingizning Telegram Bot tokeningiz bilan almashtiring
-    TOKEN = "Sizning_Tokeningiz_shu_yerda_qoladi"
+    TOKEN = "8996916069:AAFfxGbWY6YrK4f784ChJneTAg7tyuLoqW4"
 
     app = ApplicationBuilder().token(TOKEN).build()
 
